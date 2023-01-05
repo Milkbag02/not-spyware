@@ -10,3 +10,4 @@ fn scan_directory(path: &str) -> Vec<String> {
     }
     entries
 }
+
