@@ -33,8 +33,8 @@ def addDump():
 	def create_txt_file(entry):
     		with open(entry, 'r') as f:
         		contents = f.read()
-    		with open(entry + ".txt", 'w') as f:
-        	f.write(contents)
+   		 with open("src/dump/" + entry + ".txt", 'w') as f:
+        		f.write(contents)
 	for entry in entries:
     		create_txt_file(entry)
 
